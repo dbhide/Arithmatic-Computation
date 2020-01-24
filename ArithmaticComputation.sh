@@ -8,5 +8,3 @@ result1=`echo "scale=2; $number1+$number2*$number3" | bc`
 result2=`echo "scale=2; $number1*$number2+$number3" | bc`
 result3=`echo "scale=2; $number3+$number1/$number2" | bc`
 result4=`echo "scale=2; $(($number1%$number2))+$number3" | bc`
-
-res=$(($number1%$number2+$number3))

@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 declare -A Results
 declare -a arrayResult
@@ -37,5 +37,21 @@ do
    done
 done
 
-echo ${arrayResult[@]}
+echo "Descending Order: " ${arrayResult[@]}
+
+
+for((i=0;i<$len-1;i++))
+do
+   for((j=i+1;j<$len;j++))
+   do
+      if [[ ${arrayResult[i]%.*} -gt ${arrayResult[j]%.*} ]]
+      then
+            temp=${arrayResult[i]}
+            arrayResult[i]=${arrayResult[j]}
+            arrayResult[j]=$temp
+      fi
+   done
+done
+
+echo "Ascending Order: " ${arrayResult[@]}
 

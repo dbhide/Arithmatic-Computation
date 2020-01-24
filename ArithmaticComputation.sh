@@ -20,5 +20,22 @@ for (( i=0;i<4;i++ ))
 do
 	arrayResult[i]=${Results[op$((i+1))]}
 done
+echo ${arrayResult[@]}
+
+len=${#arrayResult[@]}
+
+for((i=0;i<$len-1;i++))
+do
+   for((j=i+1;j<$len;j++))
+   do
+      if [[ ${arrayResult[i]%.*} -lt ${arrayResult[j]%.*} ]]
+      then
+            temp=${arrayResult[i]}
+            arrayResult[i]=${arrayResult[j]}
+            arrayResult[j]=$temp
+      fi
+   done
+done
 
 echo ${arrayResult[@]}
+
